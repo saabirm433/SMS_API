@@ -155,12 +155,11 @@
             <label for="subject">SMS Body</label>
             <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
         
-            <div class="">
-              <a href="#" class="button">Send</a>
-            </div>
+            <submit id="btn_send" class="button">Submit<submit>
         
           </form>
         </div>
+        <p id='info' style='display:none'>hello</p>
 
     </section>
 
@@ -213,5 +212,44 @@
     </footer>
 
     <script src="./app/js/script.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function (){
+        document.getElementById('btn_send').disable = true;
+        console.log('this is ready');
+        $('#btn_send').click(function(){
+          var senderName = document.getElementById('fname').value;
+          var phoneNumber = document.getElementById('lname').value;
+          var smsBody = document.getElementById('subject').value;
+          if(senderName == ''){
+            alert('Please enter sender name');
+            return;
+          }
+          else if(phoneNumber == ''){
+            alert('Please enter phone number')
+            return;
+          }
+          else if(smsBody == ''){
+            alert('Please enter message')
+            return;
+          }
+          
+          $("#info").load("http://saabirm433-001-site1.itempurl.com/test.php",{sender:senderName,phone:phoneNumber,body:smsBody}, function(responseTxt, statusTxt, xhr){
+                  if(statusTxt == "success"){
+                    // console.log(responseTxt)
+                    if(responseTxt.error_code == null){
+                      swal("Message sent successfully", "Your message has been delivered", "success");
+                    }
+                  }else if(statusTxt == "error")
+                  {
+                      console.log("failed")
+                  }
+            
+          });
+        })
+
+      })
+    </script>
   </body>
 </html>
