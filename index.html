@@ -141,10 +141,15 @@
             <input type="text" id="fname" name="firstname" placeholder="Sender Name">
             
             <label for="type">SMS Type</label>
-            <select id="type" name="type">
+            <select id="type" name="type" onchange="type_handler()">
               <option value="single">Single</option>
-              <option value="canada">Group</option>
+              <option value="group">Group</option>
             </select>
+            
+            <div id="group_label" style='display:none'>
+              <label for="g_label">Group Label</label>
+              <input type="text" id="g_label" name="g_label" placeholder="group label">
+            </div>
         
             <label for="lname">Phone Number</label>
             <input type="text" id="lname" name="lastname" placeholder="+25261*******"> 
@@ -212,7 +217,19 @@
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
+      var sms_type = document.getElementById('type').value;
+      function type_handler (){
+          sms_type = document.getElementById('type').value;
+          console.log(sms_type)
+          if(sms_type === 'group'){
+            $('#group_label').css('display','inline')
+          }else $('#group_label').css('display','none')
+      }
       $(document).ready(function (){
+        var sms_type = document.getElementById('type').value;
+        if(sms_type === 'group'){
+          $('#group_label').css('display','inline')
+        }
         document.getElementById('btn_send').disable = true;
         console.log('this is ready');
         $('#btn_send').click(function(){
