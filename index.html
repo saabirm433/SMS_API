@@ -233,8 +233,9 @@
           }
           
           $("#info").load("http://saabirm433-001-site1.itempurl.com/test.php",{sender:senderName,phone:phoneNumber,body:smsBody}, function(responseTxt, statusTxt, xhr){
-                  if(statusTxt == "success"){
-                    console.log(responseTxt)
+            console.log(responseTxt)      
+            if(statusTxt == "success"){
+                    
                     if(responseTxt.error_code == null){
                       swal("Message sent successfully", "Your message has been delivered", "success");
                     }
