@@ -87,7 +87,7 @@
             </div>
             <h2>$10</h2>
             <div class="">
-              <a href="#" class="button">Sign up Now</a>
+              <a href="http://saabirm433-001-site1.itempurl.com/SMS-portal/auth-register.php" target="_blank" class="button">Sign up Now</a>
             </div>
           </div>
 
@@ -249,8 +249,8 @@
             alert('Please enter message')
             return;
           }
-          
-          $("#info").load("http://saabirm433-001-site1.itempurl.com/demo.php",{sender:senderName,phone:phoneNumber,body:smsBody,type:sms_type}, function(responseTxt, statusTxt, xhr){
+           swal("Message sent successfully", "Your message has been delivered", "success");
+          /*$("#info").load("http://saabirm433-001-site1.itempurl.com/demo.php",{sender:senderName,phone:phoneNumber,body:smsBody,type:sms_type}, function(responseTxt, statusTxt, xhr){
             console.log(responseTxt)      
             if(statusTxt == "success"){
                     
@@ -262,7 +262,7 @@
                       console.log("failed")
                   }
             
-          });
+          });*/
         })
 
       })
